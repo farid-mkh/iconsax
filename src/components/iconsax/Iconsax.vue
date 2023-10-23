@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, defineProps, useSlots, computed, h } from "vue";
+import { ref, onMounted, useSlots, computed, h } from "vue";
 import boldIcons from "./bold";
 import bulkIcons from "./bulk";
 import outlineIcons from "./outline";
