@@ -1,0 +1,96 @@
+body{
+    font-family: Arial, sans-serif;
+}
+main {
+    padding: 20px;
+}
+
+@media (min-width: 960px) {
+    main {
+        padding: 100px;
+    }
+}
+
+.monospace {
+    background: #ddd;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+p {
+    color: rgb(65, 63, 63);
+    font-size: 12px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: repeat(3, 33%);
+    }
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 2rem;
+}
+
+.mb-5 {
+    margin-bottom: 20px;
+}
+
+.select-box {
+    width: 324px;
+    background: #ddd;
+    border-radius: 12px;
+    margin: 20px auto;
+}
+
+input,
+select {
+    background: #ddd;
+    border: none;
+    height: 40px !important;
+    border-radius: 12px;
+    width: 300px;
+    padding: 0 12px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+.loading {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 2s cubic-bezier(1, -0.14, 1, 0.25) infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 1000;
+    }
+}
