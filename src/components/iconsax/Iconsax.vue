@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { useSlots, computed, h } from "vue";
-import boldIcons from "./bold";
-import bulkIcons from "./bulk";
-import outlineIcons from "./outline";
-import twotoneIcons from "./twotone";
-type IconTypes = "outline" | "twotone" | "bulk" | "bold";
+import { getIcon as getOutlineIcon } from "./icons/outline";
+import { getIcon as getBoldIcon } from "./icons/bold";
+import { getIcon as getBulkIcon } from "./icons/bulk";
+import { getIcon as getTwotoneIcons } from "./icons/twotone";
+import type { IconType } from "./type";
 const icons = {
-  bold: boldIcons,
-  bulk: bulkIcons,
-  outline: outlineIcons,
-  twotone: twotoneIcons,
+  bold: getBoldIcon,
+  outline: getOutlineIcon,
+  bulk: getBulkIcon,
+  twotone: getTwotoneIcons,
 };
 interface Props {
   size?: string | number;
   color?: string | undefined;
   small?: boolean;
   xSmall?: boolean;
-  type?: IconTypes;
+  type?: keyof typeof icons;
   solid?: boolean;
   strokeWidth?: string | null;
-  icon?: keyof typeof boldIcons;
+  icon?: IconType;
   rotate?: "rotate-90" | "rotate-270" | "rotate-180";
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -38,12 +38,9 @@ const iconName = computed<string>(() => {
   return slot.default ? (slot.default()[0].children as string).trim() ?? "" : "";
 });
 const iconPureName = computed(() => {
-  if (iconName.value) {
-    const i = iconName.value.replace(
-      /-r90|-r180|-270/g,
-      ""
-    ) as keyof typeof icons["bold"];
-    return icons[props.type][i];
+  if (iconName.value && icons[props.type]) {
+    const i = iconName.value as IconType;
+    return icons[props.type](i);
   }
   return null;
 });
@@ -113,3 +110,5 @@ const camelToDashCase = (str: string) =>
   transform: rotate(270deg);
 }
 </style>
+./icons/bold./icons/bulk ./icons/twotone./icons/outline ./icon/outline
+./icons/outline./icons/bold./icons/bulk./icons/twotone

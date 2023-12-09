@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import Iconsax from "./components/iconsax/Iconsax.vue";
-import allIcons from "./components/iconsax/bold";
+import { icons as allIcons } from "@/components/iconsax/type";
 const search = ref("");
 type IconTypes = "outline" | "twotone" | "bulk" | "bold";
-const iconType = ref<IconTypes>("outline");
+const iconType = ref<IconTypes>("twotone");
 const loading = ref(false);
 const icons = computed(() =>
-  search.value
-    ? Object.keys(allIcons).filter((i) => i.includes(search.value))
-    : Object.keys(allIcons)
+  search.value ? allIcons.filter((i) => i.includes(search.value)) : allIcons
 );
-function onChangeType(val) {
+function onChangeType(e: Event) {
+  const target = <HTMLInputElement>e.target;
   loading.value = true;
-  iconType.value = val.target.value;
+  iconType.value = target.value as IconTypes;
   setTimeout(() => {
     loading.value = false;
   }, 2000);
