@@ -1982,6 +1982,7 @@ const truck_remove = 'undefined'
 const bootstrap = 'undefined'
 const stellar_xlm = 'undefined'
 const google_paly = 'undefined'
+const icon_1 = 'undefined'
 export function getIcon(iconName: IconType) {
-  return eval(iconName)
+  return eval(iconName) ?? null
 }
