@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import Iconsax from "./components/iconsax/Iconsax.vue";
-import allIcons from "./components/iconsax/bold";
+import allIcons from "./components/iconsax/icons/bold";
 const search = ref("");
 type IconTypes = "outline" | "twotone" | "bulk" | "bold";
 const iconType = ref<IconTypes>("outline");
@@ -54,3 +54,4 @@ function onChangeType(val) {
     </div>
   </main>
 </template>
+./components/iconsax/icons/bold

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useSlots, computed, h } from "vue";
-import boldIcons from "./bold";
-import bulkIcons from "./bulk";
-import outlineIcons from "./outline";
-import twotoneIcons from "./twotone";
+import boldIcons from "./icons/bold";
+import bulkIcons from "./icons/bulk";
+import outlineIcons from "./icons/outline";
+import twotoneIcons from "./icons/twotone";
 type IconTypes = "outline" | "twotone" | "bulk" | "bold";
 const icons = {
   bold: boldIcons,
@@ -113,3 +113,4 @@ const camelToDashCase = (str: string) =>
   transform: rotate(270deg);
 }
 </style>
+./icons/bold./icons/bulk./icons/outline./icons/twotone
