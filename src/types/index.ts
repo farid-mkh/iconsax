@@ -1,0 +1,1 @@
+export type IconVariants =  'outline' | 'bold' | 'bulk' | 'two-tone'

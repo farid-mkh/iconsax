@@ -1,27 +1,19 @@
 <script setup lang="ts">
 import { useSlots, computed, h } from "vue";
-import { getIcon as getOutlineIcon } from "./icons/outline";
-import { getIcon as getBoldIcon } from "./icons/bold";
-import { getIcon as getBulkIcon } from "./icons/bulk";
-import { getIcon as getTwotoneIcons } from "./icons/twotone";
-import type { IconType } from "./type";
-const icons = {
-  bold: getBoldIcon,
-  outline: getOutlineIcon,
-  bulk: getBulkIcon,
-  twotone: getTwotoneIcons,
-};
+import type { IconVariants } from "@/types";
+import {} from "@/icons/iconsax/bold"
 interface Props {
+  type?: IconVariants;
   size?: string | number;
   color?: string | undefined;
   small?: boolean;
   xSmall?: boolean;
-  type?: keyof typeof icons;
   solid?: boolean;
   strokeWidth?: string | null;
-  icon?: IconType;
+  icon?: any;
   rotate?: "rotate-90" | "rotate-270" | "rotate-180";
 }
+const icons = undefined // TODO must be defined with tree shaking
 const props = withDefaults(defineProps<Props>(), {
   size: "20px",
   small: false,
@@ -39,7 +31,7 @@ const iconName = computed<string>(() => {
 });
 const iconPureName = computed(() => {
   if (iconName.value && icons[props.type]) {
-    const i = iconName.value as IconType;
+    const i = iconName.value as any;
     return icons[props.type](i);
   }
   return null;
@@ -110,5 +102,3 @@ const camelToDashCase = (str: string) =>
   transform: rotate(270deg);
 }
 </style>
-./icons/bold./icons/bulk ./icons/twotone./icons/outline ./icon/outline
-./icons/outline./icons/bold./icons/bulk./icons/twotone
